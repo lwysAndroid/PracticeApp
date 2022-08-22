@@ -1,4 +1,4 @@
-package com.example.practiceapp.mainFlow.mainFragment.viewModel
+package com.example.practiceapp.mainFlow.mainFragment.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

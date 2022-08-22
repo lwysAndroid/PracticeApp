@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainFlow.mainFragment.view.MainFragment">
+    tools:context=".mainFlow.mainFragment.presentation.view.MainFragment">
 
     <Button
         android:id="@+id/goToServiceFragment"
