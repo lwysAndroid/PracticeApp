@@ -1,7 +1,7 @@
-package com.example.practiceapp.ui.main
+package com.example.practiceapp
 
 import androidx.lifecycle.ViewModel
 
-class MainViewModel : ViewModel() {
+class ServiceViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

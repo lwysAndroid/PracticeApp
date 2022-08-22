@@ -7,8 +7,18 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.practiceapp.ui.main.MainFragment"
+        android:name="com.example.practiceapp.mainFlow.mainFragment.view.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_serviceFragment"
+            app:destination="@id/serviceFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/serviceFragment"
+        android:name="com.example.practiceapp.ServiceFragment"
+        android:label="fragment_service"
+        tools:layout="@layout/fragment_service" />
 
 </navigation>
