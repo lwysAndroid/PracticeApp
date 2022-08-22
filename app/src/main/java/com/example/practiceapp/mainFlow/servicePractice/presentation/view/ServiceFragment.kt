@@ -42,7 +42,7 @@ class ServiceFragment : Fragment() {
     private fun setObservers() {
         viewModel.showSomeData.observe(viewLifecycleOwner){someDataList->
             var textToShow =""
-            someDataList.forEach { textToShow += "$it,\n" }
+            someDataList.forEach { textToShow += "${it.randomData},\n" }
             view?.findViewById<TextView>(R.id.responseTv)?.apply {
                 text = textToShow
             }
