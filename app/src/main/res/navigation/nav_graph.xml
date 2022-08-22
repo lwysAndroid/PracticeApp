@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/serviceFragment"
-        android:name="com.example.practiceapp.ServiceFragment"
+        android:name="com.example.practiceapp.mainFlow.servicePractice.ServiceFragment"
         android:label="fragment_service"
         tools:layout="@layout/fragment_service" />
 
