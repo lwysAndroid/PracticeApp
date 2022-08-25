@@ -41,10 +41,7 @@ class MainFragment : Fragment() {
 
         view?.findViewById<Button>(R.id.runCoroutine).apply {
             this?.setOnClickListener {
-                lifecycleScope.launch(context = Dispatchers.IO,
-                    start = CoroutineStart.DEFAULT,
-                    block = { println("newCoroutine") }
-                )
+
                 lifecycleScope.launch {
                     /*runBlocking {
                         (0 until 15).forEach{
@@ -64,12 +61,18 @@ class MainFragment : Fragment() {
                             println("$coonT $it")
                             if(it==2){
                                 coroutineContext.job.cancel()
+//                                throw Exception()
                             }
                             delay(1000)
                         }
                     }
-                    println(job.toString())
+                    println("job.toString()")
                 }
+
+                lifecycleScope.launch(context = Dispatchers.IO,
+                    start = CoroutineStart.DEFAULT,
+                    block = { println("newCoroutine") }
+                )
             }
 
         }
