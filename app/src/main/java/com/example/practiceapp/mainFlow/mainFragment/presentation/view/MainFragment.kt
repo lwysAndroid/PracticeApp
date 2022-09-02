@@ -41,41 +41,44 @@ class MainFragment : Fragment() {
 
         view?.findViewById<Button>(R.id.runCoroutine).apply {
             this?.setOnClickListener {
-
-                lifecycleScope.launch {
-                    /*runBlocking {
-                        (0 until 15).forEach{
-                            println("runBlocking $it")
-                            delay(1000)
-                        }
-                    }*/
-                    /*withContext(Dispatchers.Main){
-                        (0 until 15).forEach{
-                            println("Main $it")
-                            delay(1000)
-                        }
-                    }*/
-                    val job = withContext(Job()+Dispatchers.IO+CoroutineName("OwMAne")){
-                        val coonT =this.coroutineContext.toString()
-                        (0 until 5).forEach{
-                            println("$coonT $it")
-                            if(it==2){
-                                coroutineContext.job.cancel()
-//                                throw Exception()
-                            }
-                            delay(1000)
-                        }
-                    }
-                    println("job.toString()")
-                }
-
-                lifecycleScope.launch(context = Dispatchers.IO,
-                    start = CoroutineStart.DEFAULT,
-                    block = { println("newCoroutine") }
-                )
+                testCoroutine()
             }
 
         }
+    }
+
+    private fun testCoroutine(){
+        lifecycleScope.launch {
+            /*runBlocking {
+                (0 until 15).forEach{
+                    println("runBlocking $it")
+                    delay(1000)
+                }
+            }*/
+            /*withContext(Dispatchers.Main){
+                (0 until 15).forEach{
+                    println("Main $it")
+                    delay(1000)
+                }
+            }*/
+            val job = withContext(Job()+Dispatchers.IO+CoroutineName("OwMAne")){
+                val coonT =this.coroutineContext.toString()
+                (0 until 5).forEach{
+                    println("$coonT $it")
+                    if(it==2){
+                        coroutineContext.job.cancel()
+//                                throw Exception()
+                    }
+                    delay(1000)
+                }
+            }
+            println("job.toString()")
+        }
+
+        lifecycleScope.launch(context = Dispatchers.IO,
+            start = CoroutineStart.DEFAULT,
+            block = { println("newCoroutine") }
+        )
     }
 
     private fun goToServiceFragment(){
