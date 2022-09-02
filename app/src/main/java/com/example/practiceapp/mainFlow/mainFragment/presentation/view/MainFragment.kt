@@ -54,7 +54,8 @@ class MainFragment : Fragment() {
 
     private fun testRetrofitGraphQl() {
         lifecycleScope.launch {
-            val response = retrofitGraphQL.getAllFilms()
+//            val response = retrofitGraphQL.getAllFilms()
+            val response = retrofitGraphQL.getFilmById(6)
             if(response is Result.Success){
                 Log.d(TAG, response.data.toString())
             }else{
