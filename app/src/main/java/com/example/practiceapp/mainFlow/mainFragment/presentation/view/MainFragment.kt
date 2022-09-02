@@ -1,6 +1,7 @@
 package com.example.practiceapp.mainFlow.mainFragment.presentation.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.practiceapp.R
+import com.example.practiceapp.mainFlow.mainFragment.presentation.data.Result
+import com.example.practiceapp.mainFlow.mainFragment.presentation.data.RetrofitGraphQL
 import com.example.practiceapp.mainFlow.mainFragment.presentation.viewModel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -20,7 +23,10 @@ import kotlinx.coroutines.*
 class MainFragment : Fragment() {
 
 
+    private val TAG = "MainFragment"
     private val viewModel by viewModels<MainViewModel>()
+
+    private val retrofitGraphQL= RetrofitGraphQL()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,9 +47,22 @@ class MainFragment : Fragment() {
 
         view?.findViewById<Button>(R.id.runCoroutine).apply {
             this?.setOnClickListener {
-                testCoroutine()
+                testRetrofitGraphQl()
             }
 
+        }
+    }
+
+    private fun testRetrofitGraphQl() {
+        lifecycleScope.launch {
+            val response = retrofitGraphQL.getInternalCarList()
+            if(response is Result.Success){
+                Log.d(TAG, response.data.toString())
+            }else{
+                (response as Result.Error).also {
+                    Log.d(TAG, it.exception.toString())
+                }
+            }
         }
     }
 
