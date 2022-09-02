@@ -1,6 +1,7 @@
 package com.example.practiceapp.mainFlow.mainFragment.presentation.data
 
-import com.example.practiceapp.mainFlow.mainFragment.presentation.data.models.AllFilmsData
+import com.example.practiceapp.mainFlow.mainFragment.presentation.data.models.allfilmsResponse.AllFilmsData
+import com.example.practiceapp.mainFlow.mainFragment.presentation.data.queries.getAllFilmsQuery
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,9 +11,9 @@ class RetrofitGraphQL {
     private var starWarsApiGraphQl: StarWarsApiGraphQl? = null
 
 
-    suspend fun getInternalCarList(): Result<AllFilmsData> {
+    suspend fun getAllFilms(): Result<AllFilmsData> {
         return try {
-            val requestBody = GQLPostBody(carForPaperworkQuery)
+            val requestBody = GQLPostBody(getAllFilmsQuery)
             val carsResult = getRetrofit().getAllFilmsSW(requestBody).await()
             Result.Success(carsResult.data)
         } catch (e: Exception) {
@@ -36,25 +37,6 @@ class RetrofitGraphQL {
         return starWarsApiGraphQl!!
     }
 
-    private val carForPaperworkQuery: String = """
-          query Query {
-            allFilms {
-                films {
-                    title
-                    director
-                    releaseDate
-                    speciesConnection {
-                      species {
-                        name
-                        classification
-                        homeworld {
-                          name
-                        }
-                      }
-                    }
-                }
-           }
-          }
-          """.trimMargin()
+
 
 }

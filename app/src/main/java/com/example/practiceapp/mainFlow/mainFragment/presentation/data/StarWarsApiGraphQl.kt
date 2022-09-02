@@ -1,6 +1,6 @@
 package com.example.practiceapp.mainFlow.mainFragment.presentation.data
 
-import com.example.practiceapp.mainFlow.mainFragment.presentation.data.models.AllFilmsData
+import com.example.practiceapp.mainFlow.mainFragment.presentation.data.models.allfilmsResponse.AllFilmsData
 import kotlinx.coroutines.Deferred
 import retrofit2.http.Body
 import retrofit2.http.POST

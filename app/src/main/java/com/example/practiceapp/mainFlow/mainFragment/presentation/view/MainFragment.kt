@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.practiceapp.R
 import com.example.practiceapp.mainFlow.mainFragment.presentation.data.Result
@@ -55,7 +54,7 @@ class MainFragment : Fragment() {
 
     private fun testRetrofitGraphQl() {
         lifecycleScope.launch {
-            val response = retrofitGraphQL.getInternalCarList()
+            val response = retrofitGraphQL.getAllFilms()
             if(response is Result.Success){
                 Log.d(TAG, response.data.toString())
             }else{
